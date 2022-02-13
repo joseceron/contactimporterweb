@@ -16,6 +16,9 @@ import babelPolyfill from 'babel-polyfill'
 import VueI18n from 'vue-i18n'
 import Vuelidate from 'vuelidate'
 import VueResource from 'vue-resource';
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
+import "vue-select/src/scss/vue-select.scss";
 
 Vue.use(CoreuiVuePro)
 Vue.use(BootstrapVue);
@@ -23,6 +26,7 @@ Vue.use(babelPolyfill);
 Vue.use(VueI18n);
 Vue.use(Vuelidate);
 Vue.use(VueResource);
+Vue.component("v-select", vSelect);
 
 
 Vue.prototype.$axios = axios;
