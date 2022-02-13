@@ -37,7 +37,7 @@
               <CBadge color="danger" class="mr-1">Failed</CBadge>
             </div>
             <div v-if="row.value == 'Processing'">
-              <CBadge color="dark" class="mr-1">Processing</CBadge>
+              <CBadge color="info" class="mr-1">Processing</CBadge>
             </div>
             <div v-if="row.value == 'Finished'">
               <CBadge color="success" class="mr-1">Finished</CBadge>
