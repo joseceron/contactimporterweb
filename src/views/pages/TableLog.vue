@@ -6,7 +6,7 @@
         
           <b-col lg="12">
               <h4>Logs</h4>
-              <p>This is the Log for the files processed</p>
+              <p>This is the log of the processed files</p>
           </b-col>
           <b-col lg="12">
             <b-table

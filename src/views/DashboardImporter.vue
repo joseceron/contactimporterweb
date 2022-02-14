@@ -54,7 +54,7 @@
     <b-row v-if="flagSave">
       <b-col lg="6">
         <h4>3. Send the contacts or add another file</h4>
-        <p>You can add more files in step 1 to be process them in one try</p>
+        <p>You can add more files in step 1 to process them in one try</p>
         <b-button class="btn-info" @click="loadFile">
           save contacts
         </b-button>
