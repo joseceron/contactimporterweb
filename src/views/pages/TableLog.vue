@@ -121,7 +121,6 @@
     computed: {
       items(){
         if(this.files!= null){
-          console.log('files: ', this.files)
           let totalItems = []
           this.files.map(file => {
             let contacts = file.contacts

@@ -272,7 +272,6 @@ export default {
           this.file = item;
           this.validateFiles(item);
 
-          // this.payload.push(item);
         };
         reader.readAsText(this.file);
       }
@@ -296,10 +295,18 @@ export default {
               };
               this.headerFile.push(item);
             });
+          } else if(response.status == 204){            
+            alert('There is no content in the file: ' + file.fileName)
+            this.isValidFormat = false;
+            this.isValidFormat = false;
+            let fileStatusItem = this.filesStatus.find(
+              item => item.fileName == file.fileName
+            );
+            fileStatusItem.status = "On Hold";
           }
         })
-        .catch(e => {
-          console.log("Error: ", e.body);
+        .catch(e => {          
+          alert(e.body)
           this.isValidFormat = false;
           let fileStatusItem = this.filesStatus.find(
             item => item.fileName == file.fileName
@@ -385,11 +392,10 @@ export default {
         .get(url, options)
         .then(response => {
           if (response.status == 200) {
-            console.log(response.body);
             let body = response.body
             this.items = body.items
           } else {
-            console.log("Err2: ", response);
+            console.log("Err4: ", response);
           }
         })
         .catch(error => {
