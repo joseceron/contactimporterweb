@@ -27,6 +27,7 @@ $ git clone https://github.com/joseceron/contactimporterweb.git
 $ cd contactimporterweb
 
 # install app's dependencies
+$ nvm use 10.6.0
 $ npm install
 ```
 

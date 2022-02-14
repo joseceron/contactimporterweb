@@ -1,5 +1,5 @@
 <template>
-  <div>    
+  <div>
     <b-row>
       <b-col lg="6">
         <b-row>
@@ -107,7 +107,6 @@
                   <template #cell(name)="row">
                     {{ row.value }}
                   </template>
-                  
 
                   <template #row-details="row">
                     <b-card>
@@ -227,6 +226,7 @@ export default {
   created() {
     const currentUser = this.$firebase.auth().currentUser;
     this.userToken = currentUser ? currentUser.uid : "";
+    this.loadContacts();
   },
   mounted() {
     // Set the initial number of items
@@ -360,11 +360,11 @@ export default {
       });
     },
     setProgressFiles() {
-      this.payload.map(itemPayload => {        
+      this.payload.map(itemPayload => {
         let fileStatusFound = this.filesStatus.find(
           fileStatus => fileStatus.fileName == itemPayload.fileName
-        )
-        if(fileStatusFound) fileStatusFound.status = 'Processing'
+        );
+        if (fileStatusFound) fileStatusFound.status = "Processing";
       });
     },
     onFiltered(filteredItems) {
@@ -372,6 +372,30 @@ export default {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     },
+    loadContacts() {
+      let url = "http://localhost:3000/getContacts";
+      let body = {}
+      let options = {
+        body: JSON.stringify(body),
+        headers: {
+            Authorization: this.userToken
+        }
+      }
+      this.$http
+        .get(url, options)
+        .then(response => {
+          if (response.status == 200) {
+            console.log(response.body);
+            let body = response.body
+            this.items = body.items
+          } else {
+            console.log("Err2: ", response);
+          }
+        })
+        .catch(error => {
+          alert(error.body.error)          
+        });     
+    }
   }
 };
 </script>
