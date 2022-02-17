@@ -327,21 +327,21 @@ export default {
       this.files = null;
       let url = "http://localhost:3000/contacts";
       let body = {
-        files: this.payload
-      };
+        files: this.payload, 
+        userToken: this.userToken       
+      };            
       this.setProgressFiles();
 
       let bodyS = JSON.stringify(body);
       this.$http
-        // .post(url, bodyS, { headers: {} })
-        .post(url, bodyS, {
+        .post(url, body, {
           progress: e => {
             this.progress = (e.loaded / e.total) * 100;
           }
         })
         .then(response => {
           if (response.status == 200) {
-            let body = response.body;
+            let body = response.body;            
             this.files = body.files;
             this.setFilesStatus();
             this.items = [];
